@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoLife - Магазин бытовой техники</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/1682/1682308.png" alt="TechnoLife">
+                <span class="logo-text">TechnoLife</span>
+            </a>
+
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Поиск товаров..." id="searchInput">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div class="header-actions">
+                <button class="action-btn" onclick="location.href='login.html'">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="action-btn" onclick="location.href='cart.html'">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Категории -->
+    <div class="categories">
+        <div class="categories-list">
+            <a href="#" class="category-item" data-category="all">Все товары</a>
+            <a href="#" class="category-item" data-category="Холодильники">Холодильники</a>
+            <a href="#" class="category-item" data-category="Стиральные машины">Стиральные машины</a>
+            <a href="#" class="category-item" data-category="Посудомоечные машины">Посудомоечные машины</a>
+            <a href="#" class="category-item" data-category="Духовые шкафы">Духовые шкафы</a>
+            <a href="#" class="category-item" data-category="Микроволновки">Микроволновки</a>
+            <a href="#" class="category-item" data-category="Пылесосы">Пылесосы</a>
+            <a href="#" class="category-item" data-category="Кофемашины">Кофемашины</a>
+            <a href="#" class="category-item" data-category="Мелкая техника">Мелкая техника</a>
+        </div>
+    </div>
+
+    <!-- Боковое меню -->
+    <button class="menu-btn" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-menu">
+            <h3>Меню</h3>
+            <a href="#" class="menu-item">Акции</a>
+            <a href="#" class="menu-item">Новинки</a>
+            <a href="#" class="menu-item">Популярное</a>
+            <a href="#" class="menu-item">Распродажа</a>
+            <h3>Информация</h3>
+            <a href="#" class="menu-item">О компании</a>
+            <a href="#" class="menu-item">Доставка</a>
+            <a href="#" class="menu-item">Контакты</a>
+            <a href="#" class="menu-item">Помощь</a>
+        </div>
+    </div>
+
+    <!-- Сортировка -->
+    <div class="sort-container">
+        <select id="sortSelect" onchange="sortProducts(this.value)">
+            <option value="">Сортировка</option>
+            <option value="price-asc">По цене (возрастание)</option>
+            <option value="price-desc">По цене (убывание)</option>
+            <option value="name">По названию</option>
+        </select>
+    </div>
+
+    <!-- Основной контент -->
+    <main class="main-content" id="productsContainer">
+        <!-- Товары будут добавлены через JavaScript -->
+    </main>
+
+    <!-- Подключение скриптов -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>

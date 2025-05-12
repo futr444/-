@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoLife - Вход и Регистрация</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --gray-light: #f5f6fa;
+            --gray-dark: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 900px;
+            max-width: 100%;
+            min-height: 600px;
+            display: flex;
+        }
+
+        .forms-container {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        .form-title {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            color: var(--gray-dark);
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--gray-light);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .forgot-link {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--accent-color);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #2980b9;
+        }
+
+        .toggle-form {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .toggle-btn {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        .image-container {
+            flex: 1;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .image-container h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .image-container p {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .social-login {
+            margin-top: 30px;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            color: var(--primary-color);
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .image-container {
+                display: none;
+            }
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            color: #27ae60;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="logo">
+                <img src="logo.png" alt="TechnoLife">
+            </div>
+            
+            <form id="loginForm" class="active">
+                <h2 class="form-title">Вход в аккаунт</h2>
+                
+                <div class="input-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="input-field" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="loginPassword">Пароль</label>
+                    <input type="password" id="loginPassword" class="input-field" required>
+                </div>
+                
+                <div class="remember-forgot">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">Запомнить меня</label>
+                    </div>
+                    <a href="#" class="forgot-link">Забыли пароль?</a>
+                </div>
+                
+                <button type="submit" class="submit-btn">Войти</button>
+                
+                <div class="toggle-form">
+                    Нет аккаунта?
+                    <a href="#" class="toggle-btn" onclick="toggleForm('register')">Зарегистрироваться</a>
+                </div>
+                
+                <div id="loginSuccess" class="success-message">
+                    Вход выполнен успешно! Перенаправление...
+                </div>
+            </form>
+            
+            <form id="registerForm" style="display: none;">
+                <h2 class="form-title">Регистрация</h2>
+                
+                <div class="input-group">
+                    <label for="registerName">Имя</label>
+                    <input type="text" id="registerName" class="input-field" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" class="input-field" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="registerPassword">Пароль</label>
+                    <input type="password" id="registerPassword" class="input-field" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="confirmPassword">Подтвердите пароль</label>
+                    <input type="password" id="confirmPassword" class="input-field" required>
+                </div>
+                
+                <button type="submit" class="submit-btn">Зарегистрироваться</button>
+                
+                <div class="toggle-form">
+                    Уже есть аккаунт?
+                    <a href="#" class="toggle-btn" onclick="toggleForm('login')">Войти</a>
+                </div>
+                
+                <div id="registerSuccess" class="success-message">
+                    Регистрация успешна! Перенаправление...
+                </div>
+            </form>
+        </div>
+        
+        <div class="image-container">
+            <h2>Добро пожаловать в TechnoLife</h2>
+            <p>Войдите в свой аккаунт для доступа к персональным предложениям и истории покупок</p>
+            <div class="social-login">
+                <a href="#" class="social-btn"><i class="fab fa-google"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm(formType) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            
+            if (formType === 'register') {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+            } else {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+            }
+        }
+
+        // Обработка входа
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            
+            // Здесь можно добавить валидацию
+            
+            if (rememberMe) {
+                localStorage.setItem('userEmail', email);
+            }
+            
+            document.getElementById('loginSuccess').style.display = 'block';
+            
+            // Имитация задержки перед перенаправлением
+            setTimeout(() => {
+                window.location.href = 'profile.html';
+            }, 1500);
+        });
+
+        // Обработка регистрации
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Пароли не совпадают');
+                return;
+            }
+            
+            // Сохранение данных пользователя
+            localStorage.setItem('userName', name);
+            localStorage.setItem('userEmail', email);
+            
+            document.getElementById('registerSuccess').style.display = 'block';
+            
+            // Имитация задержки перед перенаправлением
+            setTimeout(() => {
+                window.location.href = 'profile.html';
+            }, 1500);
+        });
+
+        // Проверка сохраненного email при загрузке
+        window.addEventListener('load', function() {
+            const savedEmail = localStorage.getItem('userEmail');
+            if (savedEmail) {
+                document.getElementById('loginEmail').value = savedEmail;
+                document.getElementById('rememberMe').checked = true;
+            }
+        });
+    </script>
+</body>
+</html>
